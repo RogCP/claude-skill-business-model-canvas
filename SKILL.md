@@ -242,9 +242,18 @@ Every block must have click-to-expand modal with:
 **Highlight blocks:** Linear gradients on Value Propositions and Revenue Streams
 
 ### Responsive Design
-Include media queries for: desktop (>1400px), laptop (1024-1400px), tablet (768-1024px), mobile (≤640px)
+Include media queries for: desktop (>1400px), laptop (1024-1400px), tablet (768-1024px), mobile (≤640px), small mobile (≤480px)
 
-Mobile: Vertical stack preserving order 1-9
+**CRITICAL — Mobile behavior (≤640px):** Preserve the canvas grid shape at all sizes. Do NOT convert to a vertical list. Instead:
+- Keep the 10-column × 6-row grid layout intact
+- Remove `aspect-ratio` on mobile so the grid can grow taller
+- Hide `.bmc-text` (`display: none`) — icons only in the grid
+- Show `.bmc-items-container` as `flex-wrap: wrap; justify-content: center` so icons flow naturally
+- Make `.bmc-item` display as `inline-block` with no background, padding, or margin (icon only)
+- Rely entirely on the modal for detail — clicking any block opens the full explanation
+- Reduce font sizes and padding proportionally
+
+The modal is the primary UX on mobile: compact canvas with icons → tap to read full detail.
 
 For the base template with placeholders, see `assets/bmc-template.html`
 
